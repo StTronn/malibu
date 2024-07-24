@@ -1,4 +1,7 @@
 import net,{ Server, Socket } from "net";
+import {HelloFormated} from './protocol';
+import { logger } from './logger'
+
 
 
 
@@ -7,9 +10,11 @@ export class Network {
 
 	public constructor(){
 		this.server = net.createServer(function(socket:Socket) {
-			socket.write('Echo server\r\n');
+			socket.write(HelloFormated);
 			socket.pipe(socket);
-			socket.on('data',(data:any)=>{
+			socket.on('data',(data:string)=>{
+				//will be multiple calls here
+			 logger.info(data);	
 
 			})
 		});
