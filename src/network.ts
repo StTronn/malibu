@@ -4,7 +4,6 @@ import { logger } from './logger'
 
 
 
-
 export class Network {
 	private server:Server;
 
